@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form } from '../Form'
+import { Label } from '../Label'
+import { SelectTipArea } from './SelectTipArea'
 import './style.css'
 import cifrao from '/public/icons/cifrao.svg'
 
@@ -12,16 +14,20 @@ export const MainApplication=()=>{
 
     return(
         <main className="main-container">
-           <Form
-            id='input-bill'
-            htmlFor='input-bill'
-            title='Conta'
-            icon={cifrao}
-            alt='Simbolo de cifrão'
-            type='number'
-            onGetValue={handleKeyUp}
-           />
+            <div  className="containerForm">
+                <Label title='Conta' htmlFor='input-bill' />
+                <Form
+                    id='input-bill'
+                    title='Conta'
+                    icon={cifrao}
+                    alt='Simbolo de cifrão'
+                    type='number'
+                    onGetValue={handleKeyUp}
+                    placeholder='0'
+                />
 
+            </div>
+           <SelectTipArea/>
 
         </main>
     )

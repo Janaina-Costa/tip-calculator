@@ -4,15 +4,14 @@ import './style.css'
 import { Input } from "./Input"
 
 interface IProps extends FormHTMLAttributes<HTMLFormElement>{
-    title:string,
     icon?:string,
     type:string,
-    alt:string,
+    alt?:string,
     onGetValue:(value:number)=>void,
-    htmlFor:string
+    htmlFor?:string
 }
 
-export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
+export const Form = ({ alt,icon, type, id, onGetValue, placeholder}:IProps)=>{
     const [valueInput, setValue]= useState<number|null>()
     const[isOnfocus, setIsOnFocus] =useState<boolean>(false)
 
@@ -42,25 +41,20 @@ export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
     }
 
     return(
-        <div  className="containerForm">
-                            
+                                    
             <Input
                 id={id}
                 type={type} 
-                placeholder='0'
+                placeholder={placeholder}
                 onChange={handleChangeValue} 
                 onKeyUp={handleGetValueInput}
                 onBlur={handleOnBlur} 
                 onFocus={handleOnFocus}
                 isOnFocused={isOnfocus}
-                htmlFor={htmlFor}
-                title={title}
                 alt={alt}
                 icon={icon}  
                 value={valueInput as number}           
             />
             
-          
-        </div>
     )
 }

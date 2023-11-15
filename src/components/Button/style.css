@@ -1,0 +1,22 @@
+.btn-tip{
+    background: var(--dark-cyan);
+    color: var(--white);
+    padding:.375rem 1rem ;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-tip-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    width: 7rem;
+    height: 3rem;
+    font-weight: 700;
+}
+
+.btn-tip-selected{
+    background: var( --primary-strong-cyan);
+    color: var(--dark-cyan);
+}
