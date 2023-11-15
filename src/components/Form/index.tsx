@@ -13,9 +13,10 @@ interface IProps extends FormHTMLAttributes<HTMLFormElement>{
 }
 
 export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
-    const [valueInput, setValue]= useState(0)
+    const [valueInput, setValue]= useState<number|null>()
     const[isOnfocus, setIsOnFocus] =useState<boolean>(false)
-    
+
+       
     const handleChangeValue = (e:ChangeEvent<HTMLInputElement>)=>{
         const{value}= e.target
         const limit = 16
@@ -23,7 +24,6 @@ export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
             return
         }      
         setValue(Number(value))
-        
     }
 
     const handleOnFocus=()=>{ 
@@ -37,13 +37,13 @@ export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
     const handleGetValueInput = (event:React.KeyboardEvent<HTMLInputElement>)=>{
         const {code} = event
         if(code === 'Enter' || code === 'NumpadEnter'){
-            onGetValue(valueInput)
+            onGetValue(valueInput as number)
         }
     }
 
     return(
         <div  className="containerForm">
-                
+                            
             <Input
                 id={id}
                 type={type} 
@@ -57,7 +57,7 @@ export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
                 title={title}
                 alt={alt}
                 icon={icon}  
-                value={valueInput}           
+                value={valueInput as number}           
             />
             
           

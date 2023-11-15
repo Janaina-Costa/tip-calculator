@@ -21,6 +21,8 @@ export const MainApplication=()=>{
             type='number'
             onGetValue={handleKeyUp}
            />
+
+
         </main>
     )
 }
