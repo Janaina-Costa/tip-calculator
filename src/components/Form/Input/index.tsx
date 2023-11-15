@@ -3,12 +3,12 @@ import { Icon } from "../../Icon";
 import './style.css'
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement>{
-    title: string;
     htmlFor:string
+    title: string;
+    isOnFocused:boolean,
+    alt:string,
     icon?:string,
     type:string,
-    alt:string,
-    isOnFocused:boolean,
 }
 
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {  FormHTMLAttributes } from "react"
+import React, {  ChangeEvent, FormHTMLAttributes, useState } from "react"
 import './style.css'
 import { Input } from "./Input"
 
@@ -8,33 +8,59 @@ interface IProps extends FormHTMLAttributes<HTMLFormElement>{
     icon?:string,
     type:string,
     alt:string,
-    value:number|string,
-    isOnFocused:boolean,
-    onChange:(e:any)=>void,
-    onBlur:()=>void,
-    onFocus:()=>void,
+    onGetValue:(value:number)=>void,
+    htmlFor:string
 }
 
-export const Form = ({title,alt,isOnFocused, placeholder,icon, onChange, onSubmit, onBlur, onFocus, type, id, value }:IProps)=>{
+export const Form = ({title, alt,icon, type, id, htmlFor, onGetValue}:IProps)=>{
+    const [valueInput, setValue]= useState(0)
+    const[isOnfocus, setIsOnFocus] =useState<boolean>(false)
+    
+    const handleChangeValue = (e:ChangeEvent<HTMLInputElement>)=>{
+        const{value}= e.target
+        const limit = 16
+        if(value.length>limit){
+            return
+        }      
+        setValue(Number(value))
+        
+    }
+
+    const handleOnFocus=()=>{ 
+        setIsOnFocus(true)        
+    }
+
+    const handleOnBlur=()=>{
+        setIsOnFocus(false)
+    }
+    
+    const handleGetValueInput = (event:React.KeyboardEvent<HTMLInputElement>)=>{
+        const {code} = event
+        if(code === 'Enter' || code === 'NumpadEnter'){
+            onGetValue(valueInput)
+        }
+    }
+
     return(
-        <form action="" onSubmit={onSubmit} className="containerForm">
+        <div  className="containerForm">
                 
             <Input
                 id={id}
                 type={type} 
-                placeholder={placeholder} 
-                onChange={onChange} 
-                onBlur={onBlur} 
-                onFocus={onFocus}
-                isOnFocused={isOnFocused}
-                htmlFor=''
+                placeholder='0'
+                onChange={handleChangeValue} 
+                onKeyUp={handleGetValueInput}
+                onBlur={handleOnBlur} 
+                onFocus={handleOnFocus}
+                isOnFocused={isOnfocus}
+                htmlFor={htmlFor}
                 title={title}
                 alt={alt}
-                icon={icon}
-                value={value}                
+                icon={icon}  
+                value={valueInput}           
             />
             
           
-        </form>
+        </div>
     )
 }
