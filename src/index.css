@@ -4,13 +4,14 @@
   line-height:normal;
   font-weight: 700;
   
-  --primary-strong-cyan:hsl(172, 67%, 45%);
-  --dark-cyan: hsl(183, 100%, 15%);
-  --dark-grayish-cyan: hsl(186, 14%, 43%);
-  --grayish-cyan: hsl(184, 14%, 56%);
-  --light--grayish-cyan: hsl(185, 41%, 84%);
-  --very-light-grayish-cyan: hsl(189, 41%, 97%);
-  --white: hsl(0, 0%, 100%);
+  --primary-strong-cyan:#26C2AE;
+  --dark-cyan: #00474B;
+  --dark-grayish-cyan: #7F9D9F;
+  --grayish-cyan: #5E7A7D;
+  --light--grayish-cyan: #C5E4E7;;
+  --very-light-grayish-cyan:#F3F9FA;
+  --white: #FFFFFF;
+  --error-message-color:#E17457;  
   
   background-color: var(--light--grayish-cyan);
   font-synthesis: none;

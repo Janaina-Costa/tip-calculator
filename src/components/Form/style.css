@@ -1,4 +1,27 @@
+.containerForm{
+    padding: 2rem;
+}
+
 .wrapper-input{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background: var(--very-light-grayish-cyan);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: .5rem;
+}
+.wrapper-input input{
+    width: 6.65rem;
+    font-size: 1.5rem;
+    color: var(--dark-cyan);
+    font-weight: 700;
+    text-align: right;
+    border: 2px solid #F3F9FA;
+    background: transparent;
+    outline: none;
+}
+
+.input-focus{
+    border: 2px solid var( --primary-strong-cyan) ;
 }
