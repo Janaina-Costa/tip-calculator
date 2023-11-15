@@ -1,6 +1,15 @@
-.containerTip{
+.container-tip{
+    padding: 0 2rem;
+}
+.container-tip-title{
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--grayish-cyan);
+}
+
+.wrapper-tip-button{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding:0 2rem;
+    
 }
