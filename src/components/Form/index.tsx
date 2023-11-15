@@ -1,32 +1,40 @@
-import { FormHTMLAttributes } from "react"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {  FormHTMLAttributes } from "react"
 import './style.css'
+import { Input } from "./Input"
 
 interface IProps extends FormHTMLAttributes<HTMLFormElement>{
     title:string,
     icon?:string,
     type:string,
     alt:string,
+    value:number|string,
     isOnFocused:boolean,
-    onChange:()=>void,
+    onChange:(e:any)=>void,
     onBlur:()=>void,
     onFocus:()=>void,
 }
 
-export const Form = ({title,alt,isOnFocused, placeholder,icon, onChange, onSubmit, onBlur, onFocus, type='text' }:IProps)=>{
+export const Form = ({title,alt,isOnFocused, placeholder,icon, onChange, onSubmit, onBlur, onFocus, type, id, value }:IProps)=>{
     return(
         <form action="" onSubmit={onSubmit} className="containerForm">
-            <label htmlFor="input-bill">{title}</label>
-           <div className={`wrapper-input ${isOnFocused? 'input-focus':''}`}>
-            <img src={icon} alt={alt} />
-            <input 
-                id="input-bill"
+                
+            <Input
+                id={id}
                 type={type} 
                 placeholder={placeholder} 
                 onChange={onChange} 
                 onBlur={onBlur} 
                 onFocus={onFocus}
-                />
-           </div>
+                isOnFocused={isOnFocused}
+                htmlFor=''
+                title={title}
+                alt={alt}
+                icon={icon}
+                value={value}                
+            />
+            
+          
         </form>
     )
 }
