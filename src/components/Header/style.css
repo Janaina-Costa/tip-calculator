@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 9rem;
+}
+
+.logo{
+    color: var(--dark-cyan);
+    width: 5.40rem ;
+    height:3.5rem ;
+}
