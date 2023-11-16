@@ -1,4 +1,7 @@
 .btn-tip{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--dark-cyan);
     color: var(--white);
     padding:.375rem 1rem ;
