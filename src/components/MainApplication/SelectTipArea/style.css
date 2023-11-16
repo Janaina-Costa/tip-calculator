@@ -13,3 +13,12 @@
     gap: 1rem;
     
 }
+
+.wrapper-person{
+    margin-top: 2rem;
+}
+
+.btn-tip{
+    background: var(--dark-cyan);
+    color: var(--white);
+}

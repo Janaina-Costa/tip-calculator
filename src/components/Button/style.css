@@ -1,11 +1,9 @@
-.btn-tip{
-    background: var(--dark-cyan);
-    color: var(--white);
+.btn-default{
     padding:.375rem 1rem ;
     border-radius: 5px;
     border: none;
     font-size: 1.5rem;
-    width: 9.16rem;
+    width: 100%;
     height: 4.125rem;
     font-weight: 700;
 }

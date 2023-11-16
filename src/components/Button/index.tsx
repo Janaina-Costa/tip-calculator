@@ -6,11 +6,11 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     text: string;
 }
 
-export const Button = ({ isSelected, text,name, onClick}:IProps)=>{
+export const Button = ({ isSelected, text,name,className, onClick}:IProps)=>{
     
     return(
         <button 
-        className={`btn-tip ${isSelected? 'btn-tip-selected':''}`}
+        className={`btn-default ${isSelected? 'btn-tip-selected':className} `}
         onClick={onClick} name={name}
         >
             {text}

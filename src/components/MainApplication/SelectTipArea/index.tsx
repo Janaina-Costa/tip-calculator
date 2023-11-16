@@ -4,10 +4,13 @@ import './style.css'
 import { tipData } from '../../../data/tipData'
 import { Form } from '../../Form'
 import  { useState } from 'react'
+import { Label } from '../../Label'
+import person from '../../../assets/icons/person.svg'
 
 interface IProps {
     onGetValueTip: (value: number) => void
     onGetButtonValue:(value:number)=>void
+    onGetValueNumberPerson:(value:number)=>void
 }
 interface ITipProps{
     id:string
@@ -16,13 +19,16 @@ interface ITipProps{
 }
 
 
-export const SelectTipArea = ({ onGetValueTip, onGetButtonValue }: IProps) => {
+export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumberPerson }: IProps) => {
     const[dataTip, setDataTip] = useState<ITipProps[]>(tipData)
     const [tipValue, setTipValue]=useState<number>()
 
     const handleKeyUp = (valueInput: number) => {
         onGetValueTip(valueInput)
 
+    }
+    const handleKeyUpNumberPerson=(valueInput:number)=>{
+        onGetValueNumberPerson(valueInput)
     }
 
     const handleButtonClick = (id:string, name:any)=>{
@@ -58,10 +64,21 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue }: IProps) => {
             <div className="wrapper-tip-button">
                 {dataTip.map(tip => (
                     <>
-                        <Button id={tip.id} text={tip.tip} isSelected={tip.isSelected} onClick={(e)=>handleButtonClick(tip.id, e.target.name)} name={tip.tip} />
+                        <Button id={tip.id} text={tip.tip} isSelected={tip.isSelected} onClick={(e:any)=>handleButtonClick(tip.id, e.target.name )} name={tip.tip} className='btn-tip'/>
                     </>
                 ))}
                 <Form placeholder='Custom' type='number' onGetValue={handleKeyUp} />
+            </div>
+            <div className="wrapper-person">
+                <Label htmlFor='person-number' title='Numero de Pessoas'/>
+            <Form 
+                type='number' 
+                alt='Imagem de um icone de perfil de pessoa'
+                icon={person}
+                placeholder='0'
+                onGetValue={handleKeyUpNumberPerson}
+
+            />
             </div>
         </div >
     )

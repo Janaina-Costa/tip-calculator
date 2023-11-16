@@ -1,6 +1,6 @@
 import { Form } from "../../Form"
 import { Label } from "../../Label"
-import cifrao from '/public/icons/cifrao.svg'
+import cifrao from '../../../assets/icons/cifrao.svg'
 import './style.css'
 
 

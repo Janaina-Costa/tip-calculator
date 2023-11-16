@@ -1,0 +1,44 @@
+.container-summary{
+    padding:2rem 1.5rem;
+    
+}
+
+.wrapper-summary{
+    background: var(--dark-cyan);
+    border-radius:15px ;
+    padding: 2.3rem 1.24rem 1.24rem;
+}
+
+.tip-amount, .total{
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+}
+
+.title-amount, .title-total{
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.comment{
+    color: var(--dark-grayish-cyan);
+}
+
+.wrapper-paragraph p{
+    margin: 0;
+}
+
+.value-amount, .value-total{
+    color: var(--primary-strong-cyan);
+    font-size: 2rem;
+    letter-spacing: -0.667px;
+}
+
+.btn-summary{
+    background-color: var(--primary-strong-cyan);
+    color: var(--dark-cyan);
+    transition: background 1s ease-in-out;
+}
+.btn-summary:hover{
+    background: var(--light-cyan);
+}

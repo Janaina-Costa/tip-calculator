@@ -1,14 +1,15 @@
 import { FormBill } from './FormBill'
 import { SelectTipArea } from './SelectTipArea'
+import { SummaryTip } from './Summary'
 import './style.css'
 
 export const MainApplication=()=>{
 
-    const handleKeyUpBillInput=(valueInput:number)=>{
-        if(!valueInput){
+    const handleKeyUpBillInput=(valueBillInput:number)=>{
+        if(!valueBillInput){
             return
         }
-        console.log('peguei', valueInput);
+        console.log('peguei', valueBillInput);
         
     }
 
@@ -22,11 +23,20 @@ export const MainApplication=()=>{
         
     }
 
+    const handleKeyUpPersonInput=(valuePersonInput:number)=>{
+        console.log('total de pessoas', valuePersonInput);
+        
+    }
+
     return(
         <main className="main-container">
             <FormBill onGetValueBill={handleKeyUpBillInput}/>
-           <SelectTipArea onGetValueTip={handleKeyUPTipInput} onGetButtonValue={handleClickTipValue}/>
-
+            <SelectTipArea 
+                onGetValueTip={handleKeyUPTipInput} 
+                onGetButtonValue={handleClickTipValue}
+                onGetValueNumberPerson={handleKeyUpPersonInput}
+           />
+            <SummaryTip/>
         </main>
     )
 }
