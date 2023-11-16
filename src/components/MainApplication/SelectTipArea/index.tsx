@@ -14,14 +14,13 @@ interface IProps {
 }
 interface ITipProps{
     id:string
-    tip:string,
+    tip:number,
     isSelected:boolean
 }
 
 
 export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumberPerson }: IProps) => {
     const[dataTip, setDataTip] = useState<ITipProps[]>(tipData)
-    const [tipValue, setTipValue]=useState<number>()
 
     const handleKeyUp = (valueInput: number) => {
         onGetValueTip(valueInput)
@@ -31,13 +30,10 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
         onGetValueNumberPerson(valueInput)
     }
 
-    const handleButtonClick = (id:string, name:any)=>{
-        const buttonValue = name.split('')
-        buttonValue.pop()
-        const value = buttonValue.join('')
-    
-        
-     setDataTip(prev=>{       
+
+    const handleButtonClick = (id:string, valueButton:number)=>{
+                
+        setDataTip(prev=>{       
      return  prev.map(item=> item.id === id? {...item, isSelected:!item.isSelected}:item)
      })
     
@@ -45,14 +41,10 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
         if(item.id !== id && item.isSelected){
             return setDataTip(prev=>prev.map(tip=>tip.id !== id && tip.isSelected?{...tip, isSelected:!tip.isSelected}:tip)
     )}
-    })
-
-    setTipValue(Number(value))
+})
     
-    if(!tipValue){
-        return
-    }
-    onGetButtonValue(tipValue)
+    
+    onGetButtonValue(valueButton)
     
       
 }
@@ -64,7 +56,7 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
             <div className="wrapper-tip-button">
                 {dataTip.map(tip => (
                     <>
-                        <Button id={tip.id} text={tip.tip} isSelected={tip.isSelected} onClick={(e:any)=>handleButtonClick(tip.id, e.target.name )} name={tip.tip} className='btn-tip'/>
+                        <Button id={tip.id} text={`${String(tip.tip)}%`} isSelected={tip.isSelected} onClick={(e:any)=>handleButtonClick(tip.id, e.target.value )} value={tip.tip} className='btn-tip'/>
                     </>
                 ))}
                 <Form placeholder='Custom' type='number' onGetValue={handleKeyUp} />

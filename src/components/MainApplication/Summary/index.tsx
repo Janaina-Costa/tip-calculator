@@ -1,7 +1,11 @@
 import { Button } from '../../Button'
 import './style.css'
+interface IProps{
+    tipAmount: number,
+    totalTip: number
+}
 
-export const SummaryTip =()=>{
+export const SummaryTip =({tipAmount,totalTip}:IProps)=>{
     return(
         <div className="container-summary">
             <div className="wrapper-summary">
@@ -10,7 +14,7 @@ export const SummaryTip =()=>{
                     <p className='title-amount'>Tip Amount </p>
                     <p className='comment'>/ person</p>
                     </div>
-                    <p className='value-amount'><span>R$</span>1,00</p>
+                    <p className='value-amount'><span>R$</span>{tipAmount}</p>
                 </div>
 
                 <div className="total">
@@ -18,7 +22,7 @@ export const SummaryTip =()=>{
                     <p className='title-total'>Total</p>
                     <p className='comment'>/ person</p>
                 </div>
-                    <p className='value-total'><span>R$</span>1,00</p>
+                    <p className='value-total'><span>R$</span>{totalTip}</p>
                 </div>
                 <Button className='btn-summary' text='RESET'/>
             </div>
