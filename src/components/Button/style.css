@@ -1,22 +1,19 @@
 .btn-tip{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: var(--dark-cyan);
     color: var(--white);
     padding:.375rem 1rem ;
     border-radius: 5px;
     border: none;
+    font-size: 1.5rem;
+    width: 9.16rem;
+    height: 4.125rem;
+    font-weight: 700;
 }
 
 .btn-tip-text{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
-    width: 7rem;
-    height: 3rem;
-    font-weight: 700;
 }
 
 .btn-tip-selected{
