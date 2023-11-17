@@ -44,7 +44,7 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
 })
     
     
-    onGetButtonValue(valueButton)
+    onGetButtonValue(Number(valueButton))
     
       
 }
@@ -54,12 +54,18 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
         <div className='container-tip'>
             <p className='container-tip-title'>Selecione a gorjeta %</p>
             <div className="wrapper-tip-button">
-                {dataTip.map(tip => (
-                    <>
-                        <Button id={tip.id} text={`${String(tip.tip)}%`} isSelected={tip.isSelected} onClick={(e:any)=>handleButtonClick(tip.id, e.target.value )} value={tip.tip} className='btn-tip'/>
-                    </>
+                {dataTip.map(tip => (                   
+                        <Button 
+                        key={tip.id}
+                        id={tip.id} 
+                        text={`${String(tip.tip)}%`} 
+                        isSelected={tip.isSelected} 
+                        onClick={(e:any)=>handleButtonClick(tip.id, e.target.value )} value={tip.tip} 
+                        className='btn-tip'
+                        />
+                    
                 ))}
-                <Form placeholder='Custom' type='number' onGetValue={handleKeyUp} />
+                <Form placeholder='Digite %' type='number' onGetValue={handleKeyUp} />
             </div>
             <div className="wrapper-person">
                 <Label htmlFor='person-number' title='Numero de Pessoas'/>
