@@ -8,21 +8,18 @@ interface IProps extends FormHTMLAttributes<HTMLFormElement>{
     type:string,
     alt?:string,
     onGetValue:(value:number)=>void,
-    htmlFor?:string
+    htmlFor?:string,
+    onChange:(e:any)=>void
+    value?:number
 }
 
-export const Form = ({ alt,icon, type, id, onGetValue, placeholder}:IProps)=>{
-    const [valueInput, setValue]= useState<number|null>()
+export const Form = ({ alt,icon, type, id, onGetValue, placeholder, onChange, value}:IProps)=>{
+   // const [valueInput, setValue]= useState<number|null>()
     const[isOnfocus, setIsOnFocus] =useState<boolean>(false)
 
        
     const handleChangeValue = (e:ChangeEvent<HTMLInputElement>)=>{
-        const{value}= e.target
-        const limit = 16
-        if(value.length>limit){
-            return
-        }      
-        setValue(Number(value))
+       onChange(e)
     }
 
     const handleOnFocus=()=>{ 
@@ -34,9 +31,12 @@ export const Form = ({ alt,icon, type, id, onGetValue, placeholder}:IProps)=>{
     }
     
     const handleGetValueInput = (event:React.KeyboardEvent<HTMLInputElement>)=>{
+        if(!value){
+            return
+        }
         const {code} = event
-        if(code === 'Enter' || code === 'NumpadEnter'){
-            onGetValue(valueInput as number)
+        if(code === 'Enter' || code === 'NumpadEnter'){            
+            onGetValue(value)
         }
     }
 
@@ -52,8 +52,8 @@ export const Form = ({ alt,icon, type, id, onGetValue, placeholder}:IProps)=>{
                 onFocus={handleOnFocus}
                 isOnFocused={isOnfocus}
                 alt={alt}
-                icon={icon}  
-                value={valueInput as number}           
+                icon={icon} 
+                value={value}           
             />
             
     )

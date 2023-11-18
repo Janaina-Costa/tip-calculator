@@ -1,15 +1,13 @@
-import { Button } from '../../Button'
+import { ReactNode } from 'react'
 import './style.css'
 interface IProps{
     tipAmount: number,
     totalTip: number,
-    onClick: () => void
+    children:ReactNode
 }
 
-export const SummaryTip =({tipAmount,totalTip, onClick}:IProps)=>{
-    const handleClearButton = ()=>{
-        onClick()
-    }
+export const SummaryTip =({tipAmount,totalTip,children}:IProps)=>{
+    
     return(
         <div className="container-summary">
             <div className="wrapper-summary">
@@ -28,7 +26,7 @@ export const SummaryTip =({tipAmount,totalTip, onClick}:IProps)=>{
                 </div>
                     <p className='value-total'><span>R$</span>{totalTip}</p>
                 </div>
-                <Button className='btn-summary' text='RESET' onClick={handleClearButton}/>
+                {children}
             </div>
         </div>
     )

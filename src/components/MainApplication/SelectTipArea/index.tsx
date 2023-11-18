@@ -3,7 +3,7 @@ import { Button } from '../../Button'
 import './style.css'
 import { tipData } from '../../../data/tipData'
 import { Form } from '../../Form'
-import  { useState } from 'react'
+import  { ChangeEvent, useState } from 'react'
 import { Label } from '../../Label'
 import person from '../../../assets/icons/person.svg'
 
@@ -11,6 +11,10 @@ interface IProps {
     onGetValueTip: (value: number) => void
     onGetButtonValue:(value:number)=>void
     onGetValueNumberPerson:(value:number)=>void
+    onChangeValueTip:(e:any)=>void
+    onChangeNumberPerson:(e:any)=>void
+    valueTip?:number
+    totalPerson?:number
 }
 interface ITipProps{
     id:string
@@ -19,12 +23,20 @@ interface ITipProps{
 }
 
 
-export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumberPerson }: IProps) => {
+export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumberPerson, onChangeValueTip, onChangeNumberPerson, totalPerson, valueTip }: IProps) => {
     const[dataTip, setDataTip] = useState<ITipProps[]>(tipData)
 
-    const handleKeyUp = (valueInput: number) => {
+    const handleChangeInput = (e:ChangeEvent<HTMLInputElement>)=>{
+        onChangeValueTip(e)
+    }
+
+    const handleKeyUp = (valueInput: number) => {        
         onGetValueTip(valueInput)
 
+    }
+
+    const handleChangeNumberPerson =(e:ChangeEvent<HTMLInputElement>)=>{
+        onChangeNumberPerson(e)
     }
     const handleKeyUpNumberPerson=(valueInput:number)=>{
         onGetValueNumberPerson(valueInput)
@@ -33,7 +45,7 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
 
     const handleButtonClick = (id:string, valueButton:number)=>{
                 
-        setDataTip(prev=>{       
+    setDataTip(prev=>{       
      return  prev.map(item=> item.id === id? {...item, isSelected:!item.isSelected}:item)
      })
     
@@ -42,11 +54,8 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
             return setDataTip(prev=>prev.map(tip=>tip.id !== id && tip.isSelected?{...tip, isSelected:!tip.isSelected}:tip)
     )}
 })
-    
-    
+        
     onGetButtonValue(Number(valueButton))
-    
-      
 }
        
     
@@ -65,7 +74,7 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
                         />
                     
                 ))}
-                <Form placeholder='Digite %' type='number' onGetValue={handleKeyUp} />
+                <Form placeholder='Digite %' type='number' onGetValue={handleKeyUp}  onChange={handleChangeInput} value={valueTip} />
             </div>
             <div className="wrapper-person">
                 <Label htmlFor='person-number' title='Numero de Pessoas'/>
@@ -75,6 +84,8 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
                 icon={person}
                 placeholder='0'
                 onGetValue={handleKeyUpNumberPerson}
+                onChange={handleChangeNumberPerson}
+                value={totalPerson}
 
             />
             </div>
