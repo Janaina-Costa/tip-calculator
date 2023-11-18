@@ -6,7 +6,13 @@
 }
 
 .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--dark-cyan);
-    width: 5.40rem ;
     height:3.5rem ;
+    letter-spacing: 1.2rem;
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 0 1rem
 }

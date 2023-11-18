@@ -22,3 +22,9 @@
     background: var(--dark-cyan);
     color: var(--white);
 }
+
+@media (min-width:480px)  {
+    .wrapper-tip-button{
+        grid-template-columns: repeat(3,1fr);
+    }
+}

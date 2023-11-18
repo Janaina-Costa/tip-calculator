@@ -9,7 +9,7 @@ export const MainApplication=()=>{
     const [valueBill, setValueBill] = useState<number>()
     const [valueTip, setValueTip] = useState<number>(0)
     const [valueTipInput, setValueTipInput] = useState<number>()
-    const [totalPerson, setTotalPerson] = useState<number>()
+    const [totalPerson, setTotalPerson] = useState<number>(1)
     const [tipAmount, setTipAmount] = useState<number>(0)
     const [totalBill, setTotalBill] = useState<number>(0)
     const [isDisabled, setIsDisabled] = useState<boolean>(false)
@@ -113,15 +113,14 @@ export const MainApplication=()=>{
         }
 
         
-        if((valueTip  || valueTipInput)  && !valueBill || valueBill as number <=0){
+        if((!valueBill || valueBill as number <=0) && (valueTip >0  || valueTipInput as number >0) ){
             setHasError(true)
-        }else {
+            return
+        }else  {
             setHasError(false)
         }
         
-        if((valueTip  || valueTipInput) && !totalPerson){
-            setHasError(true)
-        }
+       
 
     },[valueBill, totalPerson,valueTip, valueTipInput])
 
@@ -132,6 +131,7 @@ export const MainApplication=()=>{
         setValueTipInput(0)
         setTipAmount(0)
         setTotalPerson(0)
+        setValueTip(0)
         setTotalBill(0)
         setTipAmount(0)                
     }
@@ -139,7 +139,8 @@ export const MainApplication=()=>{
   
     return(
         <main className="main-container">
-            <FormBill value={valueBill as number} onGetValueBill={handleKeyUpBillInput} onChangeValueBill={handleChangeBillInput} hasError={hasError} />
+           <section className="form-area">
+           <FormBill value={valueBill as number} onGetValueBill={handleKeyUpBillInput} onChangeValueBill={handleChangeBillInput} hasError={hasError} />
             <SelectTipArea 
                 onChangeValueTip={handleChangeTipValue}
                 onChangeNumberPerson={handleChangeNumberPerson}
@@ -151,6 +152,7 @@ export const MainApplication=()=>{
                 hasError={hasError}
                 
            />
+           </section>
             <SummaryTip tipAmount={tipAmount} totalTip={totalBill} >
             <Button disabled={isDisabled}  className={isDisabled?'btn-disabled':'btn-summary'} text='RESET' onClick={handleClearForm}/>
             </SummaryTip>

@@ -11,7 +11,8 @@ export const SummaryTip =({tipAmount,totalTip,children}:IProps)=>{
     return(
         <div className="container-summary">
             <div className="wrapper-summary">
-                <div className="tip-amount">
+               <div className="content-summary">
+               <div className="tip-amount">
                     <div className="wrapper-paragraph">
                     <p className='title-amount'>Valor da gorjeta</p>
                     <p className='comment'>/ pessoa</p>
@@ -26,6 +27,7 @@ export const SummaryTip =({tipAmount,totalTip,children}:IProps)=>{
                 </div>
                     <p className='value-total'><span>R$</span>{totalTip}</p>
                 </div>
+               </div>
                 {children}
             </div>
         </div>

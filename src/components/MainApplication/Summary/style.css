@@ -34,3 +34,11 @@
     letter-spacing: -0.667px;
 }
 
+@media (min-width:480px)  {
+    .wrapper-summary{
+       height: 26rem;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+    }
+}

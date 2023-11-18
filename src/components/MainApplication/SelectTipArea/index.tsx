@@ -24,7 +24,7 @@ interface ITipProps{
 }
 
 
-export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumberPerson, onChangeValueTip, onChangeNumberPerson, totalPerson, valueTip, hasError }: IProps) => {
+export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumberPerson, onChangeValueTip, onChangeNumberPerson, totalPerson, valueTip}: IProps) => {
     const[dataTip, setDataTip] = useState<ITipProps[]>(tipData)
 
     const handleChangeInput = (e:ChangeEvent<HTMLInputElement>)=>{
@@ -73,7 +73,7 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
             </div>
 
             <div className="wrapper-person">
-                <Label htmlFor='person-number' title='Numero de Pessoas' hasError={hasError} errorMessage='Adicione ao menos uma pessoa'  />
+                <Label htmlFor='person-number' title='Numero de Pessoas'/>
                 <Form 
                     type='number' 
                     alt='Imagem de um icone de perfil de pessoa'
@@ -82,7 +82,6 @@ export const SelectTipArea = ({ onGetValueTip, onGetButtonValue, onGetValueNumbe
                     onGetValue={handleKeyUpNumberPerson}
                     onChange={handleChangeNumberPerson}
                     value={totalPerson}
-                    hasError={hasError}
                     min={0}
                 />
             </div>

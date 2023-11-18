@@ -24,7 +24,11 @@ export const FormBill = ({onGetValueBill, onChangeValueBill, value, hasError}:IP
     }
     return(
         <div className="containerForm">
-            <Label title='Conta' htmlFor='input-bill' hasError={hasError} errorMessage="Valor invalido"/>
+            <Label 
+            title='Conta' 
+            htmlFor='input-bill' 
+            hasError={hasError} 
+            errorMessage="Valor invalido"/>
 
             <Form  
             placeholder="0" 

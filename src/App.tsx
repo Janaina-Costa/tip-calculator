@@ -1,14 +1,15 @@
 import { Header } from "./components/Header"
 import { MainApplication } from "./components/MainApplication"
+import './App.css'
 
 function App() {
  
 
   return (
-    <>
-      <Header>App Name</Header>
+    <section className="app-container">
+      <Header>Gruja</Header>
       <MainApplication/>
-    </>
+    </section>
   )
 }
 
