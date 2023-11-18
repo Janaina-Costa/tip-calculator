@@ -34,11 +34,3 @@
     letter-spacing: -0.667px;
 }
 
-.btn-summary{
-    background-color: var(--primary-strong-cyan);
-    color: var(--dark-cyan);
-    transition: background 1s ease-in-out;
-}
-.btn-summary:hover{
-    background: var(--light-cyan);
-}

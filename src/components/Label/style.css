@@ -1,8 +1,21 @@
-.label-container{
+.container-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label{
     margin-bottom: 0.5rem;
     display: block;
 
     font-size: 1rem;
     font-weight: 700;
     color: var(--grayish-cyan);
+}
+
+.error-message{
+    color: var(--error-message-color);
+    font-size: .8rem;
+    text-align: right;
+    margin: 0;
 }

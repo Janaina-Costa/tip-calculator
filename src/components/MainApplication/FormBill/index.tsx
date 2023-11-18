@@ -7,12 +7,13 @@ import { ChangeEvent } from "react"
 
 
 interface IProps{
-    onGetValueBill:(value:number)=>void
-    onChangeValueBill:(e:any)=>void
     value:number
+    onChangeValueBill:(e:any)=>void
+    onGetValueBill:(value:number)=>void
+    hasError:boolean
 }
 
-export const FormBill = ({onGetValueBill, onChangeValueBill, value}:IProps)=>{
+export const FormBill = ({onGetValueBill, onChangeValueBill, value, hasError}:IProps)=>{
 
     const handleKeyUP = (value:number)=>{
         onGetValueBill(value)
@@ -23,7 +24,7 @@ export const FormBill = ({onGetValueBill, onChangeValueBill, value}:IProps)=>{
     }
     return(
         <div className="containerForm">
-            <Label title='Conta' htmlFor='input-bill' />
+            <Label title='Conta' htmlFor='input-bill' hasError={hasError} errorMessage="Valor invalido"/>
 
             <Form  
             placeholder="0" 
@@ -35,6 +36,8 @@ export const FormBill = ({onGetValueBill, onChangeValueBill, value}:IProps)=>{
             value={value}
             onGetValue={handleKeyUP}
             onChange={handleChangeValue}
+            hasError = {hasError}
+            min={0}
             />
         </div>
     )

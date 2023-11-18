@@ -12,6 +12,8 @@ export const MainApplication=()=>{
     const [totalPerson, setTotalPerson] = useState<number>()
     const [tipAmount, setTipAmount] = useState<number>(0)
     const [totalBill, setTotalBill] = useState<number>(0)
+    const [isDisabled, setIsDisabled] = useState<boolean>(false)
+    const [hasError, setHasError] = useState<boolean>(false)
     
     
     const handleChangeBillInput = (e:ChangeEvent<HTMLInputElement>)=>{
@@ -74,16 +76,23 @@ export const MainApplication=()=>{
 
     useEffect(()=>{
         if(valueTipInput as number>0){
-            setValueTip(0)
-                        
+            setValueTip(0)            
         }
     },[valueTipInput, valueTip])
-    
+
+        
     useEffect(()=>{
         if(!valueBill || !totalPerson &&(!valueTip &&!valueTipInput)){
             return
         }
+        
         const tip = valueTip|| valueTipInput as number
+
+        if(tip <=0 || totalPerson as number <=0){
+            return
+        }
+
+       
         const percentCalc = (valueBill* tip)/100
               
         const divisionForPerson = (percentCalc/ (totalPerson as number)).toFixed(2)
@@ -94,6 +103,28 @@ export const MainApplication=()=>{
         setTotalBill(Number(calcTotalBillForPerson))
 
     },[valueBill, valueTip, totalPerson, valueTipInput])
+
+    
+    useEffect(()=>{
+        if(!valueBill  && !valueTip && !valueTipInput){
+            setIsDisabled(true)            
+        }else{
+            setIsDisabled(false)
+        }
+
+        
+        if((valueTip  || valueTipInput)  && !valueBill || valueBill as number <=0){
+            setHasError(true)
+        }else {
+            setHasError(false)
+        }
+        
+        if((valueTip  || valueTipInput) && !totalPerson){
+            setHasError(true)
+        }
+
+    },[valueBill, totalPerson,valueTip, valueTipInput])
+
     
     
     const handleClearForm = ()=>{
@@ -102,14 +133,13 @@ export const MainApplication=()=>{
         setTipAmount(0)
         setTotalPerson(0)
         setTotalBill(0)
-        setTipAmount(0)        
+        setTipAmount(0)                
     }
-  
     
- 
+  
     return(
         <main className="main-container">
-            <FormBill value={valueBill as number} onGetValueBill={handleKeyUpBillInput} onChangeValueBill={handleChangeBillInput}/>
+            <FormBill value={valueBill as number} onGetValueBill={handleKeyUpBillInput} onChangeValueBill={handleChangeBillInput} hasError={hasError} />
             <SelectTipArea 
                 onChangeValueTip={handleChangeTipValue}
                 onChangeNumberPerson={handleChangeNumberPerson}
@@ -118,9 +148,11 @@ export const MainApplication=()=>{
                 onGetValueNumberPerson={handleKeyUpPersonInput}    
                 totalPerson={totalPerson}
                 valueTip={valueTipInput}
+                hasError={hasError}
+                
            />
             <SummaryTip tipAmount={tipAmount} totalTip={totalBill} >
-            <Button className='btn-summary' text='RESET' onClick={handleClearForm}/>
+            <Button disabled={isDisabled}  className={isDisabled?'btn-disabled':'btn-summary'} text='RESET' onClick={handleClearForm}/>
             </SummaryTip>
            
         </main>

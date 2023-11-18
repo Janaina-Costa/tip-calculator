@@ -2,5 +2,17 @@
     background: var(--white);
     border-radius: 1.5rem 1.5rem 0 0;
 }
+.btn-summary{
+    background-color: var(--primary-strong-cyan);
+    color: var(--dark-cyan);
+    transition: background 1s ease-in-out;
+}
+.btn-summary:hover{
+    background: var(--light-cyan);
+}
 
+.btn-disabled{
+    background: #0D686D;
+    color: var(--dark-cyan);
+}
 

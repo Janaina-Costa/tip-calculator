@@ -7,16 +7,16 @@ interface IProps extends FormHTMLAttributes<HTMLFormElement>{
     icon?:string,
     type:string,
     alt?:string,
-    onGetValue:(value:number)=>void,
     htmlFor?:string,
-    onChange:(e:any)=>void
-    value?:number
+    value?:number,
+    hasError?:boolean,
+    min?:number,
+    onChange:(e:any)=>void,
+    onGetValue:(value:number)=>void,
 }
 
-export const Form = ({ alt,icon, type, id, onGetValue, placeholder, onChange, value}:IProps)=>{
-   // const [valueInput, setValue]= useState<number|null>()
+export const Form = ({ alt,icon, type, id, onGetValue, placeholder, onChange, value, hasError, min}:IProps)=>{
     const[isOnfocus, setIsOnFocus] =useState<boolean>(false)
-
        
     const handleChangeValue = (e:ChangeEvent<HTMLInputElement>)=>{
        onChange(e)
@@ -53,7 +53,9 @@ export const Form = ({ alt,icon, type, id, onGetValue, placeholder, onChange, va
                 isOnFocused={isOnfocus}
                 alt={alt}
                 icon={icon} 
-                value={value}           
+                value={value}   
+                hasError={hasError}   
+                min={min}  
             />
             
     )
