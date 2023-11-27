@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {  ChangeEvent, FormHTMLAttributes, useState } from "react"
-import './style.css'
 import { Input } from "./Input"
 
 interface IProps extends FormHTMLAttributes<HTMLFormElement>{
